@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(mysql *)",
+      "PowerShell(& \"C:\\\\Program Files\\\\MySQL\\\\MySQL Server 8.0\\\\bin\\\\mysql.exe\" -u root \"-pMySQLSedeco2012!\" -e \"CREATE DATABASE IF NOT EXISTS whatsapp CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; USE whatsapp; CREATE TABLE IF NOT EXISTS contactos \\(id INT AUTO_INCREMENT PRIMARY KEY, numero VARCHAR\\(25\\) NOT NULL UNIQUE, nombre VARCHAR\\(255\\), primer_mensaje DATETIME NOT NULL, ultimo_mensaje DATETIME NOT NULL, total_mensajes INT NOT NULL DEFAULT 1\\) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; SHOW TABLES;\")",
+      "PowerShell(& \"C:\\\\Program Files\\\\MySQL\\\\MySQL Server 8.0\\\\bin\\\\mysql.exe\" -u root \"-pMySQLSedeco2012!\" whatsapp -e \"DESCRIBE contactos;\")"
+    ]
+  }
+}

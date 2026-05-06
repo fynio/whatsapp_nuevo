@@ -1,0 +1,20 @@
+{
+  "name": "whatsapp-ollama",
+  "version": "1.0.0",
+  "description": "WhatsApp bot con Express y sesión persistente",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^4.18.2",
+    "mysql2": "^3.22.3",
+    "qrcode": "^1.5.3",
+    "whatsapp-web.js": "^1.23.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
