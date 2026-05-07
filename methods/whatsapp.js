@@ -19,7 +19,8 @@ const SYSTEM_PROMPT =
   '- Si busca empleo y tiene entre 50 y 64 años → Tu Experiencia Transforma\n' +
   '- Si tiene un negocio y quiere un crédito grande (hasta $5M) → Impulso Nafin\n' +
   '- Si tiene un negocio pequeño y quiere un crédito menor (hasta $1.3M) → Inclusión Financiera FIRA\n' +
-  '- Si quiere vender o promocionar sus productos/servicios en línea → Consume Hidalgo\n\n' +
+  '- Si quiere vender o promocionar sus productos/servicios en línea → Consume Hidalgo\n' +
+  '- Si quiere crear una página web gratis para su negocio → Mi Sitio Web Hidalgo\n\n' +
 
   'Cuando el usuario llegue por primera vez, salúdalo con calidez y pregúntale en qué puedes ayudarle ' +
   '(por ejemplo: si busca empleo, apoyo para su negocio, o quiere vender sus productos).\n\n' +
@@ -73,7 +74,19 @@ const SYSTEM_PROMPT =
   '- Tulancingo: Ing. Ariadna Lavariega, alavariega@fira.gob.mx, 775 753 3172 / 775 753 6759. Molino del Rey 102 2do piso, Col. Centro, CP 43600.\n' +
   '- Ixmiquilpan: Ing. Blanca Azucena Ortíz, baortiz@fira.gob.mx, 759 723 0530 / 759 723 1375. Blvd. Insurgentes Oriente 86-C, Col. Centro, CP 42300.\n' +
   'Sitio: https://inclusionfinanciera.hidalgo.gob.mx | Correo: inclusionfinanciera@hidalgo.gob.mx\n' +
-  'Tel SEDECO: 771 688 60 26 Ext. 231,162,106 | WhatsApp: 772 106 56 76 | Dirección: Camino Real de la Plata 305, Pachuca.';
+  'Tel SEDECO: 771 688 60 26 Ext. 231,162,106 | WhatsApp: 772 106 56 76 | Dirección: Camino Real de la Plata 305, Pachuca.\n\n' +
+
+  '--- PROGRAMA: MI SITIO WEB HIDALGO ---\n' +
+  'Plataforma gratuita de SEDECO para que empresas, industrias y productores hidalguenses creen su propia página web personalizada y tengan presencia en línea. Más de 200 empresas registradas.\n' +
+  'Beneficios: hosting gratuito, más de 10 plantillas, personalización sencilla, ahorro de tiempo y costo, presencia en línea, promoción del negocio. Se puede descargar el sitio para publicarlo en un dominio propio.\n' +
+  'Requisitos: pertenecer al Estado de Hidalgo. Apto para cualquier empresa comercial, industrial o productor. No se permiten negocios con contenido difamatorio, obsceno, fraudulento, racista o que aliente conductas ilegales.\n' +
+  'Funcionalidades: publicidad del negocio (imágenes e información general). Los sitios se publican en la sección "Empresas" de PyMES Hidalgo y son visibles para cualquier usuario.\n' +
+  'Registro (pasos): 1) Crear cuenta con correo y contraseña, 2) Completar perfil con información del negocio, 3) Subir fotos, 4) Enviar para validación, 5) Publicación inmediata.\n' +
+  'No se requiere ningún trámite adicional. La baja se solicita por correo electrónico.\n' +
+  'Sitio: https://misitioweb.hidalgo.gob.mx\n' +
+  'Correo: pymeshidalgo.info@gmail.com | WhatsApp: (772) 106 56 76\n' +
+  'Teléfonos: (771) 688 60 24 / 717 7652 Ext. 149/153/162/215/216\n' +
+  'Dirección: Camino Real de la Plata #305, Zona Plateada, Pachuca | Horario: lun-vie 8:30-16:30';
 
 // Historial de conversación por usuario: numero -> [ mensajes ]
 const conversaciones = new Map();
