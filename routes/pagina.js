@@ -19,6 +19,8 @@ router.get('/', (req, res) => {
           h1 { color: #128C7E; margin: 10px 0; }
           .info { background: #f0f2f5; border-radius: 8px; padding: 12px; margin-top: 16px; font-size: 14px; color: #333; }
           p { color: #999; font-size: 13px; margin-top: 20px; }
+          .btn-ollama { display: inline-block; margin-top: 24px; padding: 12px 28px; background: #e8410b; color: white; border-radius: 8px; text-decoration: none; font-size: 15px; font-weight: bold; transition: background 0.2s; }
+          .btn-ollama:hover { background: #c23509; }
         </style>
       </head>
       <body>
@@ -30,6 +32,7 @@ router.get('/', (req, res) => {
             +${state.clientInfo?.wid?.user || ''}
           </div>
           <p>La sesión está guardada. No necesitas escanear el QR de nuevo.</p>
+          <a href="/ollama" class="btn-ollama">🦙 Conectar con Ollama</a>
         </div>
       </body>
       </html>

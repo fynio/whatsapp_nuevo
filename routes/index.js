@@ -7,5 +7,6 @@ router.use(require('./status'));
 router.use(require('./mensajes'));
 router.use(require('./contactos'));
 router.use(require('./estadisticas'));
+router.use(require('./ollama'));
 
 module.exports = router;
