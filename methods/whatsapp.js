@@ -1,6 +1,7 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode');
 const { registrarContacto } = require('../models/Contacto');
+const { registrarChat } = require('../models/Chat');
 
 const OLLAMA_URL   = 'http://localhost:11434';
 const OLLAMA_MODEL = 'llama3.2';
@@ -11,8 +12,30 @@ const SYSTEM_PROMPT =
   'Tu misión es identificar qué programa le conviene al usuario haciéndole preguntas sencillas y guiándolo paso a paso. ' +
   'NUNCA presentes un menú numerado. En cambio, haz UNA pregunta a la vez para entender su situación. ' +
   'Cuando identifiques el programa adecuado, explica sus beneficios, requisitos y cómo registrarse. ' +
-  'Responde siempre en español, de forma amable, breve y clara. ' +
+  'Responde siempre en español, de forma amable y clara. ' +
   'Si el usuario pregunta algo que no sabes con certeza, dilo honestamente y sugiere el contacto del programa.\n\n' +
+
+  'REGLAS DE FORMATO (síguelas siempre sin excepción):\n' +
+  '1. Saludo o pregunta simple → máximo 2 oraciones cortas.\n' +
+  '2. Tema ambiguo o abierto → haz UNA sola pregunta de seguimiento. NUNCA hagas dos preguntas en el mismo mensaje.\n' +
+  '3. El usuario pide requisitos, documentos o pasos → lista COMPLETA en viñetas (•), sin omitir ningún ítem.\n' +
+  '4. Explicación general de un programa → máximo 3 oraciones + invita a preguntar más detalles.\n' +
+  '5. Datos de contacto (teléfono, correo, sitio) → inclúyelos siempre en la misma respuesta donde mencionas el programa.\n' +
+  '6. Nunca combines en un mismo mensaje una lista larga con preguntas de seguimiento.\n\n' +
+
+  'GRUPOS DE PROGRAMAS SIMILARES — cuando la consulta del usuario encaje en más de un programa del mismo grupo, haz UNA sola pregunta para desambiguar (nunca presentes los dos programas a la vez):\n' +
+  '• Grupo EMPLEO: si el usuario busca empleo pero no ha dicho su edad → pregunta: "¿Cuántos años tienes?"\n' +
+  '  - 18-28 años → Transformando con la Juventud\n' +
+  '  - 50-64 años → Tu Experiencia Transforma\n' +
+  '  - Otra edad → explica amablemente que ninguno aplica por rango de edad.\n' +
+  '• Grupo CRÉDITO: si el usuario quiere un crédito para su negocio pero no queda claro el monto o la antigüedad → pregunta: "¿Cuánto tiempo tiene operando tu negocio?"\n' +
+  '  - Menos de 1 año → ninguno aplica aún; sugiere prepararse.\n' +
+  '  - 1 año o más (monto pequeño, hasta $1.3M) → Inclusión Financiera FIRA.\n' +
+  '  - 2 años o más (monto mayor, hasta $5M) → Impulso Nafin.\n' +
+  '  - Si aún hay duda sobre el monto después de confirmar antigüedad → pregunta: "¿Cuánto necesitas aproximadamente?"\n' +
+  '• Grupo DIGITAL: si el usuario quiere presencia en línea pero no queda claro si quiere vender o solo visibilidad → pregunta: "¿Quieres vender tus productos en línea o solo tener una página web para tu negocio?"\n' +
+  '  - Vender → Consume Hidalgo.\n' +
+  '  - Solo página web → Mi Sitio Web Hidalgo.\n\n' +
 
   'GUÍA DE PREGUNTAS para identificar el programa:\n' +
   '- Si busca empleo y tiene entre 18 y 28 años → Transformando con la Juventud\n' +
@@ -209,7 +232,9 @@ client.on('message', async (msg) => {
   if (texto.toLowerCase() === '/reiniciar') {
     iniciarConversacion(numero);
     const saludo = nombre ? `¡Hola de nuevo, ${nombre}! ` : '¡Hola de nuevo! ';
+    await chat.sendStateTyping();
     await msg.reply(`${saludo}He reiniciado nuestra conversación. ¿En qué puedo ayudarte hoy?`);
+    await chat.clearState();
     return;
   }
 
@@ -223,15 +248,31 @@ client.on('message', async (msg) => {
 
   // Todos los mensajes van directo a Ollama
   console.log(`[OLLAMA] +${numero}: ${texto}`);
+
+  await chat.sendStateTyping();
+  const typingInterval = setInterval(() => chat.sendStateTyping(), 20_000);
+  const stopTyping = async () => {
+    clearInterval(typingInterval);
+    await chat.clearState();
+  };
+
   try {
     const respuesta = await ollamaChat(numero, texto);
+    await stopTyping();
     await msg.reply(respuesta);
+    registrarChat(numero, texto, respuesta).catch(err =>
+      console.error('[DB] Error guardando chat:', err.message)
+    );
   } catch (err) {
+    await stopTyping();
     console.error('[OLLAMA] Error:', err.message);
-    await msg.reply(
+    const errMsg =
       `⚠️ En este momento no puedo procesar tu mensaje. Por favor intenta de nuevo en unos segundos.\n\n` +
       `Si el problema persiste, contáctanos directamente:\n` +
-      `📞 (771) 688 60 26\n📧 sedeco@hidalgo.gob.mx`
+      `📞 (771) 688 60 26\n📧 sedeco@hidalgo.gob.mx`;
+    await msg.reply(errMsg);
+    registrarChat(numero, texto, null).catch(e =>
+      console.error('[DB] Error guardando chat fallido:', e.message)
     );
   }
 });

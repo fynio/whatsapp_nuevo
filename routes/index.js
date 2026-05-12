@@ -8,5 +8,6 @@ router.use(require('./mensajes'));
 router.use(require('./contactos'));
 router.use(require('./estadisticas'));
 router.use(require('./ollama'));
+router.use('/chats', require('./chats'));
 
 module.exports = router;

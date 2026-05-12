@@ -38,6 +38,20 @@ async function initDB() {
     ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
   `);
 
+  await pool.execute(`
+    CREATE TABLE IF NOT EXISTS chats (
+      id        INT AUTO_INCREMENT PRIMARY KEY,
+      numero    VARCHAR(25) NOT NULL,
+      pregunta  TEXT        NOT NULL,
+      respuesta TEXT,
+      fecha     DATETIME    NOT NULL,
+      INDEX idx_chats_numero (numero),
+      INDEX idx_chats_fecha  (fecha),
+      CONSTRAINT fk_chats_contacto FOREIGN KEY (numero)
+        REFERENCES contactos(numero) ON UPDATE CASCADE
+    ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+  `);
+
   console.log('[DB] Tablas listas');
 }
 

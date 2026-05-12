@@ -8,7 +8,12 @@
       "WebFetch(domain:transformandoconlajuventud.hidalgo.gob.mx)",
       "WebFetch(domain:tuexperienciatransforma.hidalgo.gob.mx)",
       "WebFetch(domain:impulso.hidalgo.gob.mx)",
-      "WebFetch(domain:inclusionfinanciera.hidalgo.gob.mx)"
+      "WebFetch(domain:inclusionfinanciera.hidalgo.gob.mx)",
+      "Bash(node -e \"const wwebjs = require\\('whatsapp-web.js'\\); console.log\\('wwebjs version ok'\\);\")",
+      "Bash(node -e ' *)",
+      "Bash(timeout 25 node server.js)",
+      "Bash(rm -rf \"C:/nginx/html/whatsapp_nuevo/session\")",
+      "Bash(rm -rf \"C:/nginx/html/whatsapp_nuevo/.wwebjs_cache\")"
     ]
   }
 }
