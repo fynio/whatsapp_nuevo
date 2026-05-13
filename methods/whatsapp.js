@@ -138,6 +138,37 @@ const SYSTEM_PROMPT =
   'También puedes mencionar este canal cuando el usuario pregunte dónde obtener más información o cómo mantenerse informado de los programas.\n';
 
 
+// Groserías a detectar — solo raíces para cubrir variantes
+const GROCERIAS = [
+  'puta', 'puto', 'chinga', 'chingo', 'verga', 'pendejo', 'pendeja',
+  'culero', 'culera', 'cabron', 'cabrona', 'cabrón', 'cabrona',
+  'pinche', 'mierda', 'joder', 'coño', 'culo', 'perra', 'perro',
+  'mamada', 'mamadas', 'wey', 'güey', 'chingada', 'chingado',
+  'marica', 'maricon', 'maricón', 'idiota', 'imbecil', 'imbécil',
+  'estupido', 'estúpido', 'estupida', 'estúpida', 'pendejada',
+  'hijo de', 'hdp', 'wtf', 'fuck', 'shit', 'bitch', 'bastard'
+];
+
+const RESPUESTAS_BARRIO = [
+  "Ey ey ey... cálmate, bro 😅 Aquí estamos pa' ayudarte, no te me aceleres.",
+  'Oye, oye, relájate. No hay necesidad de andar así. ¿En qué te echamos la mano?',
+  'Tranqui, tranqui... respira, que aquí nadie te va a fallar 🙌 ¿Qué necesitas?',
+  'Jálatela, compita 😄 Cuéntame qué te trais y te ayudamos al tiro.',
+  "Ey, estate quieto un momento 😂 Aquí andamos pa' lo que se ofrezca, sin drama.",
+  'Ajá, ya ya... cálmate. No te me pongas así que sí te atendemos, ¿qué onda?'
+];
+
+function contieneGroceria(texto) {
+  const lower = texto.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  return GROCERIAS.some(g =>
+    lower.includes(g.normalize('NFD').replace(/[̀-ͯ]/g, ''))
+  );
+}
+
+function respuestaBarrio() {
+  return RESPUESTAS_BARRIO[Math.floor(Math.random() * RESPUESTAS_BARRIO.length)];
+}
+
 // Historial de conversación por usuario: numero -> [ mensajes ]
 const conversaciones = new Map();
 
@@ -271,6 +302,16 @@ client.on('message', async (msg) => {
     if (nuevo) console.log(`[NUEVO CONTACTO] +${numero} (${nombre || 'sin nombre'})`);
   } catch (err) {
     console.error('[DB] Error registrando contacto:', err.message);
+  }
+
+  // Filtro de groserías — responde como persona de barrio y no pasa a Ollama
+  if (contieneGroceria(texto)) {
+    console.log(`[GROSERIA] +${numero}: ${texto}`);
+    await chat.sendStateTyping();
+    await new Promise(r => setTimeout(r, 800));
+    await chat.clearState();
+    await msg.reply(respuestaBarrio());
+    return;
   }
 
   // Todos los mensajes van directo a Ollama
