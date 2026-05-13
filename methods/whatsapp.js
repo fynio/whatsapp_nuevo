@@ -3,8 +3,18 @@ const qrcode = require('qrcode');
 const { registrarContacto } = require('../models/Contacto');
 const { registrarChat } = require('../models/Chat');
 
-const OLLAMA_URL   = 'http://localhost:11434';
-const OLLAMA_MODEL = 'llama3.2';
+const AI_PROVIDER  = (process.env.AI_PROVIDER  || 'ollama').toLowerCase();
+const OLLAMA_URL   = process.env.OLLAMA_URL   || 'http://localhost:11434';
+const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'llama3.2';
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
+const GEMINI_MODEL   = process.env.GEMINI_MODEL   || 'gemini-2.0-flash';
+
+if (AI_PROVIDER === 'gemini' && !GEMINI_API_KEY) {
+  console.error('[GEMINI] GEMINI_API_KEY no está configurada en .env');
+  process.exit(1);
+}
+
+console.log(`[AI] Proveedor: ${AI_PROVIDER === 'gemini' ? `Gemini (${GEMINI_MODEL})` : `Ollama (${OLLAMA_MODEL})`}`);
 
 const SYSTEM_PROMPT =
   'Eres un asistente virtual amable del Gobierno del Estado de Hidalgo, México, ' +
@@ -314,13 +324,15 @@ function respuestaDefensa() {
   return RESPUESTAS_DEFENSA[Math.floor(Math.random() * RESPUESTAS_DEFENSA.length)];
 }
 
-// Historial de conversación por usuario: numero -> [ mensajes ]
-const conversaciones = new Map();
+// Historial de conversación por usuario
+// Ollama: numero -> [{ role, content }]
+// Gemini: numero -> [{ role: 'user'|'model', parts: [{text}] }]
+const conversaciones      = new Map();
+const conversacionesGemini = new Map();
 
 function iniciarConversacion(numero) {
-  conversaciones.set(numero, [
-    { role: 'system', content: SYSTEM_PROMPT }
-  ]);
+  conversaciones.set(numero, [{ role: 'system', content: SYSTEM_PROMPT }]);
+  conversacionesGemini.set(numero, []);
 }
 
 async function ollamaChat(numero, userMessage) {
@@ -342,10 +354,40 @@ async function ollamaChat(numero, userMessage) {
 
   history.push({ role: 'assistant', content: reply });
 
-  // Mantener solo los últimos 20 mensajes (sin contar el system)
   if (history.length > 21) history.splice(1, history.length - 21);
 
   return reply;
+}
+
+async function geminiChat(numero, userMessage) {
+  if (!conversacionesGemini.has(numero)) iniciarConversacion(numero);
+  const history = conversacionesGemini.get(numero);
+
+  // Gemini requiere historial con roles alternados user/model
+  const { GoogleGenerativeAI } = require('@google/generative-ai');
+  const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+  const model = genAI.getGenerativeModel({
+    model: GEMINI_MODEL,
+    systemInstruction: SYSTEM_PROMPT,
+  });
+
+  const chat = model.startChat({ history: [...history] });
+  const result = await chat.sendMessage(userMessage);
+  const reply = result.response.text();
+
+  history.push({ role: 'user',  parts: [{ text: userMessage }] });
+  history.push({ role: 'model', parts: [{ text: reply }] });
+
+  // Mantener últimos 20 turnos (10 intercambios)
+  if (history.length > 20) history.splice(0, history.length - 20);
+
+  return reply;
+}
+
+async function aiChat(numero, userMessage) {
+  return AI_PROVIDER === 'gemini'
+    ? geminiChat(numero, userMessage)
+    : ollamaChat(numero, userMessage);
 }
 
 const state = {
@@ -486,8 +528,8 @@ client.on('message', async (msg) => {
     return;
   }
 
-  // Todos los mensajes van directo a Ollama
-  console.log(`[OLLAMA] +${numero}: ${texto}`);
+  const providerTag = AI_PROVIDER === 'gemini' ? 'GEMINI' : 'OLLAMA';
+  console.log(`[${providerTag}] +${numero}: ${texto}`);
 
   await chat.sendStateTyping();
   const typingInterval = setInterval(() => chat.sendStateTyping(), 20_000);
@@ -497,7 +539,7 @@ client.on('message', async (msg) => {
   };
 
   try {
-    const respuesta = await ollamaChat(numero, texto);
+    const respuesta = await aiChat(numero, texto);
     await stopTyping();
     await msg.reply(respuesta);
     registrarChat(numero, texto, respuesta).catch(err =>
@@ -505,7 +547,7 @@ client.on('message', async (msg) => {
     );
   } catch (err) {
     await stopTyping();
-    console.error('[OLLAMA] Error:', err.message);
+    console.error(`[${providerTag}] Error:`, err.message);
     const errMsg =
       `⚠️ En este momento no puedo procesar tu mensaje. Por favor intenta de nuevo en unos segundos.\n\n` +
       `Si el problema persiste, contáctanos directamente:\n` +
