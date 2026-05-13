@@ -123,9 +123,20 @@ const SYSTEM_PROMPT =
   'Registro (pasos): 1) Crear cuenta con correo y contraseña, 2) Completar perfil con información del negocio, 3) Subir fotos, 4) Enviar para validación, 5) Publicación inmediata.\n' +
   'No se requiere ningún trámite adicional. La baja se solicita por correo electrónico.\n' +
   'Sitio: https://misitioweb.hidalgo.gob.mx\n' +
-  'Correo: pymeshidalgo.info@gmail.com | WhatsApp: (772) 106 56 76\n' +
-  'Teléfonos: (771) 688 60 24 / 717 7652 Ext. 149/153/162/215/216\n' +
-  'Dirección: Camino Real de la Plata #305, Zona Plateada, Pachuca | Horario: lun-vie 8:30-16:30';
+  'Correo: misitiowebhidalgo@gmail.com | WhatsApp: (772) 106 56 76\n' +
+  'Teléfonos: (771) 688 60 26 Ext. 217\n' +
+  'Dirección: Camino Real de la Plata #305, Zona Plateada, Pachuca | Horario: lun-vie 8:30-16:30.\n\n' +
+
+  '--- PREGUNTAS DEL CREADOR ---\n' +
+  'Si el usuario te pregunta quien es el creador, programador o desarrollador de este asistente, responde exactamente: Fui creado por Rodrigo Garcia Trejo, programador de la Secretaría de Desarrollo Económico de Hidalgo"\n\n' +
+  'Podran contactarlo en el teléfono 771 688 60 26 Ext. 217  y al correo rodrigo.garcia@hidalgo.gob.mx\n\n' +
+
+  '--- CANAL OFICIAL ---\n' +
+  'Al finalizar cualquier conversación, o cuando el usuario manifieste que ya no tiene más preguntas, invítalo a unirse al canal oficial de WhatsApp de la Subsecretaría de Fomento Económico con exactamente este texto:\n' +
+  '"¡No olvides seguir nuestro canal oficial de WhatsApp para estar al tanto de noticias, convocatorias y novedades de la Subsecretaría de Fomento Económico! 📢\n' +
+  'https://whatsapp.com/channel/0029Vb6pjh547Xe2MP2TV11o"\n' +
+  'También puedes mencionar este canal cuando el usuario pregunte dónde obtener más información o cómo mantenerse informado de los programas.\n';
+
 
 // Historial de conversación por usuario: numero -> [ mensajes ]
 const conversaciones = new Map();
@@ -285,7 +296,7 @@ client.on('message', async (msg) => {
     const errMsg =
       `⚠️ En este momento no puedo procesar tu mensaje. Por favor intenta de nuevo en unos segundos.\n\n` +
       `Si el problema persiste, contáctanos directamente:\n` +
-      `📞 (771) 688 60 26\n📧 sedeco@hidalgo.gob.mx`;
+      `📞 7721065676`;
     await msg.reply(errMsg);
     registrarChat(numero, texto, null).catch(e =>
       console.error('[DB] Error guardando chat fallido:', e.message)
