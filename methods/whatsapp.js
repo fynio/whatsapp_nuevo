@@ -146,27 +146,58 @@ const GROCERIAS = [
   'mamada', 'mamadas', 'wey', 'güey', 'chingada', 'chingado',
   'marica', 'maricon', 'maricón', 'idiota', 'imbecil', 'imbécil',
   'estupido', 'estúpido', 'estupida', 'estúpida', 'pendejada',
-  'hijo de', 'hdp', 'wtf', 'fuck', 'shit', 'bitch', 'bastard'
+  'hijo de', 'hdp', 'wtf', 'fuck', 'fucker', 'fucking', 'shit', 'bitch',
+  'bastard', 'asshole', 'ass', 'damn', 'crap', 'piss', 'cock', 'dick',
+  'pussy', 'cunt', 'motherfucker', 'bullshit', 'jackass', 'dumbass',
+  'idiot', 'moron', 'retard', 'jerk', 'whore', 'slut', 'fag', 'faggot'
 ];
 
 const RESPUESTAS_BARRIO = [
   "Ey ey ey... cálmate, bro 😅 Aquí estamos pa' ayudarte, no te me aceleres.",
   'Oye, oye, relájate. No hay necesidad de andar así. ¿En qué te echamos la mano?',
   'Tranqui, tranqui... respira, que aquí nadie te va a fallar 🙌 ¿Qué necesitas?',
-  'Jálatela, compita 😄 Cuéntame qué te trais y te ayudamos al tiro.',
+  'Calmado, compita 😄 Cuéntame qué te trais y te ayudamos al tiro.',
   "Ey, estate quieto un momento 😂 Aquí andamos pa' lo que se ofrezca, sin drama.",
   'Ajá, ya ya... cálmate. No te me pongas así que sí te atendemos, ¿qué onda?'
 ];
 
+const REFERENCIAS_CREADOR = [
+  'creador', 'dueño', 'dueno', 'owner', 'programador', 'el que te hizo',
+  'el que te programo', 'el que te programó', 'tu creador', 'tu dueño',
+  'tu dueno', 'rodrigo', 'el admin', 'admin', 'el jefe', 'tu jefe',
+  'el que te creo', 'el que te creó'
+];
+
+const RESPUESTAS_DEFENSA = [
+  '¡Oye, respeta! Mi creador es alguien que trabaja duro para poder ayudarte. No voy a permitir que lo insultes. 🛡️',
+  'Eso no está bien. La persona que me programó pone mucho esfuerzo en este proyecto. Te pido que lo trates con respeto. 🙏',
+  '¡Para ahí! No voy a tolerar que hables así de quien me hizo. Mi creador merece respeto. 💪',
+  'Cuidado con lo que dices. Mi creador se esfuerza mucho y no se merece eso. Guarda las formas, por favor. 😤',
+  'No me parece ese comentario sobre mi creador. Él trabaja para que yo pueda orientarte. Dale el respeto que merece. 🫡',
+  '¡Ei! Mi creador es buena gente y no está aquí para defenderse, pero yo sí puedo hacerlo. Trátalo con respeto. 🔥'
+];
+
+function normalizar(s) {
+  return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+}
+
 function contieneGroceria(texto) {
-  const lower = texto.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
-  return GROCERIAS.some(g =>
-    lower.includes(g.normalize('NFD').replace(/[̀-ͯ]/g, ''))
-  );
+  const lower = normalizar(texto);
+  return GROCERIAS.some(g => lower.includes(normalizar(g)));
+}
+
+function insultoAlCreador(texto) {
+  const lower = normalizar(texto);
+  return GROCERIAS.some(g => lower.includes(normalizar(g))) &&
+         REFERENCIAS_CREADOR.some(r => lower.includes(normalizar(r)));
 }
 
 function respuestaBarrio() {
   return RESPUESTAS_BARRIO[Math.floor(Math.random() * RESPUESTAS_BARRIO.length)];
+}
+
+function respuestaDefensa() {
+  return RESPUESTAS_DEFENSA[Math.floor(Math.random() * RESPUESTAS_DEFENSA.length)];
 }
 
 // Historial de conversación por usuario: numero -> [ mensajes ]
@@ -302,6 +333,16 @@ client.on('message', async (msg) => {
     if (nuevo) console.log(`[NUEVO CONTACTO] +${numero} (${nombre || 'sin nombre'})`);
   } catch (err) {
     console.error('[DB] Error registrando contacto:', err.message);
+  }
+
+  // Insulto dirigido al creador — defensa prioritaria
+  if (insultoAlCreador(texto)) {
+    console.log(`[DEFENSA CREADOR] +${numero}: ${texto}`);
+    await chat.sendStateTyping();
+    await new Promise(r => setTimeout(r, 900));
+    await chat.clearState();
+    await msg.reply(respuestaDefensa());
+    return;
   }
 
   // Filtro de groserías — responde como persona de barrio y no pasa a Ollama
