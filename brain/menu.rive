@@ -1,0 +1,225 @@
+! version = 2.0
+
+// ============================================================
+// SELECCIÓN DE ÁREA — captura cuando el usuario elige un tema
+// del menú inicial y responde con contexto enfocado.
+//
+// Esta respuesta queda en el historial del AI, de modo que
+// los mensajes siguientes ya tienen contexto del área elegida.
+// ============================================================
+
+// ============================================================
+// ÁREA: EMPLEO
+// ============================================================
+
++ empleo
+- ¡Perfecto! Te orientaré sobre nuestros *programas de Empleo*. 💼\n\nContamos con dos opciones según tu edad:\n\n👤 *Transformando con la Juventud* — para egresados de *18 a 28 años*\n   Apoyo: $10,000/mes (Superior) o $9,000/mes (Tec)\n\n👤 *Tu Experiencia Transforma* — para personas de *50 a 74 años*\n   Apoyo: $10,000/mes\n\nAmbos son estancias productivas remuneradas de hasta 6 meses, completamente gratuitas.\n\n¿Cuántos años tienes?
+
++ quiero empleo
+@ empleo
+
++ busco empleo
+@ empleo
+
++ busco trabajo
+@ empleo
+
++ quiero trabajo
+@ empleo
+
++ necesito trabajo
+@ empleo
+
++ estoy desempleado
+@ empleo
+
++ estoy desempleada
+@ empleo
+
++ sin trabajo
+@ empleo
+
++ me quede sin trabajo
+@ empleo
+
++ perdi mi trabajo
+@ empleo
+
++ quiero una beca de empleo
+@ empleo
+
++ quiero una estancia
+@ empleo
+
++ area de empleo
+@ empleo
+
++ programa de empleo
+@ empleo
+
++ programas de empleo
+@ empleo
+
++ opcion empleo
+@ empleo
+
++ me interesa empleo
+@ empleo
+
++ me interesa el empleo
+@ empleo
+
++ quiero el de empleo
+@ empleo
+
++ lo de empleo
+@ empleo
+
+// ============================================================
+// ÁREA: FINANCIAMIENTO
+// ============================================================
+
++ financiamiento
+- ¡Perfecto! Te orientaré sobre nuestros *programas de Financiamiento*. 💳\n\nContamos con dos opciones según la antigüedad de tu negocio:\n\n🏢 *Impulso NAFIN + Hidalgo* — mín. *2 años* de operación\n   Créditos de $100,000 a $5,000,000 MXN | Tasa: 14.75% anual fija\n\n🏢 *Inclusión Financiera FIRA* — mín. *1 año* de operación\n   Garantías de $10,000 a $1,300,000 MXN\n\nAmbos son para negocios registrados en Hidalgo.\n\n¿Cuánto tiempo tiene operando tu negocio?
+
++ credito
+@ financiamiento
+
++ prestamo
+@ financiamiento
+
++ quiero un credito
+@ financiamiento
+
++ quiero un prestamo
+@ financiamiento
+
++ quiero financiamiento
+@ financiamiento
+
++ necesito un credito
+@ financiamiento
+
++ necesito financiamiento
+@ financiamiento
+
++ dinero para mi negocio
+@ financiamiento
+
++ apoyo para mi negocio
+@ financiamiento
+
++ apoyo economico para negocio
+@ financiamiento
+
++ credito para mi negocio
+@ financiamiento
+
++ prestamo para mi negocio
+@ financiamiento
+
++ tengo un negocio
+@ financiamiento
+
++ area de financiamiento
+@ financiamiento
+
++ programa de financiamiento
+@ financiamiento
+
++ opcion financiamiento
+@ financiamiento
+
++ me interesa financiamiento
+@ financiamiento
+
++ me interesa el financiamiento
+@ financiamiento
+
++ quiero el de financiamiento
+@ financiamiento
+
++ lo de financiamiento
+@ financiamiento
+
++ lo del credito
+@ financiamiento
+
+// ============================================================
+// ÁREA: PRESENCIA DIGITAL
+// ============================================================
+
++ presencia digital
+- ¡Perfecto! Te orientaré sobre nuestras *plataformas de Presencia Digital*. 🌐\n\nContamos con dos opciones:\n\n🛒 *Consume Hidalgo* — para *vender* tus productos y servicios en línea\n   Sin costo de inscripción, sin mensualidades, sin comisiones\n\n💻 *Mi Sitio Web Hidalgo* — para crear tu propia *página web* gratuita\n   Hosting gratuito, más de 10 plantillas, publicación inmediata\n\nAmbas son completamente gratuitas para negocios de Hidalgo.\n\n¿Quieres vender en línea o solo tener una página web para tu negocio?
+
++ digital
+@ presencia digital
+
++ quiero presencia digital
+@ presencia digital
+
++ quiero vender en linea
+@ presencia digital
+
++ quiero vender por internet
+@ presencia digital
+
++ quiero una pagina web
+@ presencia digital
+
++ quiero un sitio web
+@ presencia digital
+
++ quiero mi pagina web
+@ presencia digital
+
++ necesito una pagina web
+@ presencia digital
+
++ necesito un sitio web
+@ presencia digital
+
++ plataforma digital
+@ presencia digital
+
++ quiero internet para mi negocio
+@ presencia digital
+
++ mi negocio en internet
+@ presencia digital
+
++ mi negocio en linea
+@ presencia digital
+
++ vender en linea
+@ presencia digital
+
++ vender por internet
+@ presencia digital
+
++ pagina web para mi negocio
+@ presencia digital
+
++ sitio web para mi negocio
+@ presencia digital
+
++ area digital
+@ presencia digital
+
++ opcion digital
+@ presencia digital
+
++ me interesa lo digital
+@ presencia digital
+
++ me interesa la presencia digital
+@ presencia digital
+
++ quiero lo de presencia digital
+@ presencia digital
+
++ lo de la pagina web
+@ presencia digital
+
++ lo de vender en linea
+@ presencia digital

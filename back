@@ -1,0 +1,27 @@
+# ── Servidor ─────────────────────────────────────────────
+PORT=3000
+
+# ── Base de datos MySQL ───────────────────────────────────
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASS=MySQLSedeco2012!
+DB_NAME=whatsapp
+
+# ── Proveedor de IA ───────────────────────────────────────
+# Valores válidos: gemini | ollama
+AI_PROVIDER=ollama
+
+# ── Gemini ────────────────────────────────────────────────
+GEMINI_API_KEY=
+GEMINI_MODEL=gemini-2.0-flash
+
+# ── Ollama (solo si AI_PROVIDER=ollama) ───────────────────
+OLLAMA_URL=http://localhost:11434
+OLLAMA_MODEL=llama3.2
+
+RIVESCRIPT_ENABLED=false    # activo  (default)
+
+# true = activo
+# false = inactivo
+#     # activo  (default)

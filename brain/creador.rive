@@ -1,0 +1,140 @@
+! version = 2.0
+
+// ============================================================
+// INSULTOS AL CREADOR — detecta grosería + referencia a Rodrigo
+// {weight=10} asegura que estos patrones ganen sobre los genéricos
+// de grocerias.rive que también contienen wildcards.
+// Respuestas: ñeras pero SIN groserías.
+// ============================================================
+
+// --- Directo: grosería + rodrigo ---
++ {weight=10}(@malas) rodrigo
+- ¡Ey ey! Aguas con lo que dices de Rodrigo, bro 😤 Ese men se echa la faena pa' que tú puedas recibir orientación gratis. Más respeto, compita. 🛡️
+- Oye, sin meterte con Rodrigo 🙌 El chavo trabaja duro pa' que este bot funcione. No está aquí pa' que le faltes el respeto.
+- ¡Ei! Rodrigo se parte el lomo programando esto pa' ayudarte. No se vale tratar así a quien te echa la mano. 🤙
+- No manches, sin faltarle al respeto a Rodrigo 😏 Ese men hizo posible que yo esté aquí pa' orientarte. Córtala, compita.
+
+// --- Directo: rodrigo + grosería ---
++ {weight=10}rodrigo (@malas)
+- ¡Ey ey! Sin meterte con Rodrigo, compita 😤 Ese men trabaja pa' que este servicio exista. Un poco de respeto no cae mal. 🛡️
+- Oye, aguas con lo que dices de Rodrigo 🙊 El chavo se echa la faena y no se lo merece. Mejor dime en qué te puedo apoyar.
+- ¡Ei! Sin faltarle el respeto a mi creador, bro 😏 Rodrigo puso mucho esfuerzo en este proyecto. No se vale.
+- No manches 😤 Rodrigo se parte el lomo pa' que este bot funcione y lo puedas usar gratis. Córtala, compita. 🛡️
+
+// --- rodrigo + palabras + grosería al final ---
++ {weight=10}rodrigo * (@malas)
+- ¡Ey! Para ahí, bro 😤 Sin andar así con Rodrigo. El men trabaja pa' ayudarte, no pa' que lo trates así. 🛡️
+- Oye, aguas con lo que dices de Rodrigo 🙌 Ese chavo se rifó programando esto. No se lo merece, compita.
+- ¡Ei! Sin meterte con mi creador, bro 😏 Rodrigo puso mucho esfuerzo en esto pa' que tú puedas recibir orientación gratis.
+
+// --- grosería + palabras + rodrigo al final ---
++ {weight=10}(@malas) * rodrigo
+- ¡Ey! Sin faltarle a Rodrigo, compita 😤 Ese men trabaja duro pa' que este servicio exista. Guarda el respeto. 🛡️
+- No manches, bro 😏 Sin andar así con Rodrigo. Ese men se rífa y merece respeto.
+- ¡Ei ei! A Rodrigo ni tocarlo, compita 🔥 El chavo se la rifa programando esto pa' que obtengas info gratis.
+
+// --- palabras + grosería + rodrigo ---
++ {weight=10}* (@malas) rodrigo
+- ¡Ey ey! Aguas con el vocabulario Y con meterte con Rodrigo, bro 😤 El men trabaja pa' ayudarte. Más respeto. 🛡️
+- Oye, cálmate 🙏 Sin groserías y sin meterte con Rodrigo. El chavo no se lo merece.
+
+// --- palabras + rodrigo + grosería ---
++ {weight=10}* rodrigo (@malas)
+- ¡Ei! Sin faltarle a Rodrigo, compita 😤 Ese men se parte el lomo pa' que este bot funcione. No se vale. 🛡️
+- No manches, bro 😏 Sin meterte con Rodrigo. El chavo trabaja pa' que esto sea gratis pa' ti.
+
+// --- palabras + rodrigo + palabras + grosería ---
++ {weight=10}* rodrigo * (@malas)
+- ¡Ey ey ey! Sin faltarle el respeto a Rodrigo, bro 😤 Ese men puso mucho esfuerzo en este proyecto pa' ayudarte gratis. Córtala. 🛡️
+- No manches, compita 😏 Sin andar así con mi creador. Rodrigo se la rifa y merece que lo traten bien.
+
+// --- Lo mismo para "programador" ---
++ {weight=10}(@malas) programador
+- ¡Ey! Aguas, bro 😤 El programador que me hizo es Rodrigo Garcia Trejo y se parte el lomo pa' que este servicio exista. Guarda el respeto. 🛡️
+- Oye, sin faltarle al programador 🙌 Rodrigo trabaja duro pa' que puedas recibir orientación gratis. No se lo merece.
+
++ {weight=10}programador (@malas)
+- ¡Ey! Sin meterte con Rodrigo que es quien me programó 😤 El chavo se echa la faena y merece respeto. Córtala, compita. 🛡️
+- No manches, bro 😏 El programador que me hizo es Rodrigo Garcia Trejo y no se merece eso. Guarda las formas.
+
++ {weight=10}(@malas) * programador
+- ¡Ei! Sin andar así con el programador, compita 😤 Rodrigo trabaja pa' que este bot funcione. No se vale. 🛡️
+
++ {weight=10}programador * (@malas)
+- ¡Ey! Sin faltarle a Rodrigo, bro 😤 Ese men se parte el lomo pa' ayudarte gratis. Guarda el respeto. 🛡️
+
++ {weight=10}* programador * (@malas)
+- ¡Ey! Aguas con lo que dices del programador, bro 😤 Rodrigo Garcia Trejo trabaja duro pa' que este servicio sea gratis. Guarda el respeto. 🛡️
+- Oye, sin meterte con el programador 🙊 Rodrigo puso mucho esfuerzo en esto pa' ayudarte. No se lo merece, compita.
+
++ {weight=10}* programador (@malas)
+- ¡Ei! Sin faltarle al programador, compita 😤 Rodrigo se la rifa programando esto pa' ti. No se vale. 🛡️
+- No manches, bro 😏 Sin meterte con Rodrigo. El men trabaja pa' que esto funcione gratis. Más respeto.
+
+// --- Lo mismo para "creador" ---
++ {weight=10}(@malas) creador
+- ¡Ei! Sin meterte con mi creador, compita 😤 Rodrigo Garcia Trejo trabaja duro pa' que este servicio exista. Más respeto. 🛡️
+
++ {weight=10}creador (@malas)
+- ¡Ey! Sin faltarle a mi creador, bro 😏 Rodrigo puso mucho esfuerzo en esto pa' ayudarte. No se vale tratarlo así.
+
+// ============================================================
+// PREGUNTAS SOBRE EL CREADOR — responde con datos reales
+// ============================================================
+
++ quien te creo
+- Fui creado por *Rodrigo Garcia Trejo*, programador de la Secretaría de Fomento Económico de Hidalgo (SEDECO). 💻\nPuedes contactarlo en:\n📞 771 688 60 26 Ext. 217\n📧 rodrigo.garcia@hidalgo.gob.mx
+
++ quien te hizo
+@ quien te creo
+
++ quien te programo
+@ quien te creo
+
++ quien te diseno
+@ quien te creo
+
++ quien es tu creador
+@ quien te creo
+
++ tu creador
+@ quien te creo
+
++ tu programador
+@ quien te creo
+
++ quien es rodrigo
+@ quien te creo
+
++ rodrigo garcia
+@ quien te creo
+
++ datos del creador
+@ quien te creo
+
++ datos del programador
+@ quien te creo
+
++ contacto del creador
+@ quien te creo
+
++ contacto del programador
+@ quien te creo
+
++ quien te desarrollo
+@ quien te creo
+
++ el que te hizo
+@ quien te creo
+
++ el que te programo
+@ quien te creo
+
++ el que te creo
+@ quien te creo
+
++ como contactar al programador
+@ quien te creo
+
++ como contactar al creador
+@ quien te creo

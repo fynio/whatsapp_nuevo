@@ -1,0 +1,253 @@
+! version = 2.0
+
+// Normalizar acentos frecuentes para que los patrones funcionen con y sin tilde
+! sub á = a
+! sub é = e
+! sub í = i
+! sub ó = o
+! sub ú = u
+! sub ü = u
+! sub ñ = n
+
+// ============================================================
+// SALUDOS BÁSICOS
+// ============================================================
+
++ hola
+- ¡Hola! Soy el asistente virtual de la Secretaría de Fomento Económico de Hidalgo (SEDECO). 😊\n\nContamos con programas en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas (18–28 o 50–74 años)\n📌 *Financiamiento* — créditos para negocios establecidos en Hidalgo\n📌 *Presencia digital* — vende en línea o crea tu página web gratis\n\n¿En cuál te puedo orientar?
+- ¡Hola! Bienvenido al asistente de SEDECO Hidalgo. 👋\n\nTenemos apoyo en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas (18–28 o 50–74 años)\n📌 *Financiamiento* — créditos preferenciales para tu negocio\n📌 *Presencia digital* — plataformas gratuitas para vender o tener tu web\n\n¿En cuál de estas áreas te puedo orientar?
+
++ hello
+- ¡Hola! Soy el asistente de SEDECO Hidalgo. 😊\n\nContamos con programas en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios en Hidalgo\n📌 *Presencia digital* — vende en línea o crea tu página web\n\n¿En cuál te puedo orientar?
+
++ hi
+- ¡Hi! Soy el asistente de SEDECO. 😊\n\nTenemos apoyo en tres áreas:\n\n📌 *Empleo* — estancias remuneradas\n📌 *Financiamiento* — créditos para negocios\n📌 *Presencia digital* — vende en línea o crea tu web\n\n¿En cuál te puedo ayudar?
+
++ hey
+- ¡Hey! Soy el asistente de SEDECO Hidalgo. 👋\n\nContamos con programas en:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios en Hidalgo\n📌 *Presencia digital* — plataformas digitales gratuitas\n\n¿En cuál te puedo orientar?
+
+// ============================================================
+// SALUDOS POR MOMENTO DEL DÍA
+// ============================================================
+
++ buenos dias
+- ¡Buenos días! Soy el asistente de SEDECO Hidalgo. ☀️\n\nContamos con programas en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas (18–28 o 50–74 años)\n📌 *Financiamiento* — créditos para negocios establecidos en Hidalgo\n📌 *Presencia digital* — vende en línea o crea tu página web gratis\n\n¿En cuál te puedo orientar?
+- ¡Buenos días! ¿En qué puedo orientarte hoy? Tenemos apoyo en *Empleo*, *Financiamiento* y *Presencia digital*. ¿Cuál te interesa?
+
++ buenas tardes
+- ¡Buenas tardes! Soy el asistente de SEDECO Hidalgo. 🌤️\n\nContamos con programas en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios en Hidalgo\n📌 *Presencia digital* — vende en línea o crea tu página web\n\n¿En cuál te puedo orientar?
+- ¡Buenas tardes! ¿En qué puedo ayudarte? Tenemos apoyo en *Empleo*, *Financiamiento* y *Presencia digital*. ¿Cuál te interesa?
+
++ buenas noches
+- ¡Buenas noches! Aquí estoy para orientarte. 🌙\n\nContamos con programas en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios en Hidalgo\n📌 *Presencia digital* — vende en línea o crea tu página web\n\n¿En cuál te puedo orientar?
+
++ buenas
+- ¡Buenas! Soy el asistente de SEDECO. 😊\n\nTenemos apoyo en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas (18–28 o 50–74 años)\n📌 *Financiamiento* — créditos para negocios en Hidalgo\n📌 *Presencia digital* — plataformas digitales gratuitas\n\n¿En cuál te puedo orientar?
+
++ buen dia
+- ¡Buen día! Soy el asistente de SEDECO Hidalgo. ☀️\n\nContamos con programas en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios\n📌 *Presencia digital* — vende en línea o crea tu web\n\n¿En cuál te puedo orientar?
+
+// ============================================================
+// SALUDOS INFORMALES / COLOQUIALES
+// ============================================================
+
++ que onda
+- ¡Qué onda! Soy el asistente de SEDECO. 👋\n\nTenemos apoyo en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios en Hidalgo\n📌 *Presencia digital* — vende en línea o crea tu web\n\n¿En cuál te echo la mano?
+- ¡Qué onda! ¿En qué te puedo apoyar? Contamos con programas de *Empleo*, *Financiamiento* y *Presencia digital*. ¿Cuál te interesa?
+
++ que tal
+- ¡Todo bien! Soy el asistente de SEDECO. 😊\n\nContamos con programas en:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios\n📌 *Presencia digital* — plataformas gratuitas\n\n¿En cuál te puedo orientar?
+
++ como estas
+- ¡Listo para ayudarte! 💪\n\nContamos con programas de SEDECO en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas (18–28 o 50–74 años)\n📌 *Financiamiento* — créditos para negocios en Hidalgo\n📌 *Presencia digital* — vende en línea o crea tu página web\n\n¿En cuál te puedo orientar?
+
++ saludos
+- ¡Saludos! Soy el asistente de SEDECO Hidalgo. 😊\n\nTenemos apoyo en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios\n📌 *Presencia digital* — plataformas gratuitas\n\n¿En cuál te puedo ayudar?
+
++ quiubo
+- ¡Quiubo! Soy el asistente de SEDECO. 👋\n\nContamos con programas en:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios en Hidalgo\n📌 *Presencia digital* — vende en línea o crea tu web\n\n¿En cuál te puedo apoyar?
+
++ ey
+- ¡Ey, hola! Soy el asistente de SEDECO. 😊\n\nContamos con programas en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios\n📌 *Presencia digital* — plataformas gratuitas\n\n¿En cuál te puedo orientar?
+
++ buen dia a todos
+- ¡Buen día a todos! Soy el asistente de SEDECO. ☀️\n\nContamos con apoyo en:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios\n📌 *Presencia digital* — plataformas gratuitas\n\n¿En cuál les puedo orientar?
+
+// ============================================================
+// SALUDOS CON COMODÍN (hola + algo más)
+// ============================================================
+
++ hola *
+- ¡Hola! Soy el asistente de SEDECO Hidalgo. 😊\n\nContamos con programas en tres áreas:\n\n📌 *Empleo* — estancias productivas remuneradas (18–28 o 50–74 años)\n📌 *Financiamiento* — créditos para negocios en Hidalgo\n📌 *Presencia digital* — vende en línea o crea tu página web\n\n¿En cuál te puedo orientar?
+
++ buenos dias *
+- ¡Buenos días! Soy el asistente de SEDECO. ☀️\n\nContamos con programas en:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios\n📌 *Presencia digital* — plataformas gratuitas\n\n¿En cuál te puedo orientar?
+
++ buenas tardes *
+- ¡Buenas tardes! Soy el asistente de SEDECO. 🌤️\n\nContamos con programas en:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios\n📌 *Presencia digital* — plataformas gratuitas\n\n¿En cuál te puedo orientar?
+
++ buenas noches *
+- ¡Buenas noches! Soy el asistente de SEDECO. 🌙\n\nContamos con programas en:\n\n📌 *Empleo* — estancias productivas remuneradas\n📌 *Financiamiento* — créditos para negocios\n📌 *Presencia digital* — plataformas gratuitas\n\n¿En cuál te puedo orientar?
+
+// ============================================================
+// DESPEDIDAS
+// ============================================================
+
++ adios
+- ¡Hasta luego! No olvides seguir nuestro canal oficial de WhatsApp para estar al tanto de noticias y convocatorias de SEDECO. 📢\nhttps://whatsapp.com/channel/0029Vb6pjh547Xe2MP2TV11o
+
++ hasta luego
+- ¡Hasta luego! No olvides seguir nuestro canal de WhatsApp de SEDECO. 📢\nhttps://whatsapp.com/channel/0029Vb6pjh547Xe2MP2TV11o
+
++ hasta pronto
+- ¡Hasta pronto! Con gusto te atendemos cuando lo necesites.
+
++ bye
+- ¡Bye! Que te vaya bien. 👋
+
++ chao
+- ¡Chao! Que te vaya muy bien. 👋
+
++ nos vemos
+- ¡Nos vemos! Cuídate mucho. 👋
+
+// ============================================================
+// AGRADECIMIENTOS Y CIERRE DE CONVERSACIÓN
+// Cubre todas las formas en que un usuario puede dar las gracias
+// antes de terminar. Responden aquí, sin pasar a Ollama/Gemini.
+// ============================================================
+
+// --- Formas directas de "gracias" ---
+
++ gracias
+- ¡De nada! Si en otro momento tienes dudas sobre los programas de SEDECO, aquí estaré. ¡Que te vaya muy bien! 😊
+- ¡Con mucho gusto! Fue un placer orientarte. Recuerda que puedes escribirnos cuando lo necesites. 👋
+- ¡Para eso estamos! Si surge alguna otra duda sobre los programas, no dudes en escribir. ¡Hasta luego! 😄
+
++ muchas gracias
+- ¡Con mucho gusto! Me alegra haberte podido orientar. ¡Que te vaya excelente! 🙌
+- ¡Es un placer! Estoy aquí cuando lo necesites. ¡Hasta pronto! 😊
+- ¡Gracias a ti por comunicarte! Si tienes más preguntas, aquí estaremos. 👋
+
++ mil gracias
+- ¡Con todo el gusto del mundo! Si necesitas más información en el futuro, aquí estamos. 😊
+- ¡Es un placer ayudarte! ¡Hasta la próxima! 🙌
+
++ muchisimas gracias
+- ¡Eso es muy amable de tu parte! Fue un gusto orientarte. ¡Cuídate mucho! 😊
+- ¡El gusto es nuestro! Si vuelves a necesitar orientación, aquí estaremos. 👋
+
++ gracias por todo
+- ¡De nada, es un placer! No olvides seguir nuestro canal de WhatsApp para mantenerte al tanto de los programas de SEDECO. 📢\nhttps://whatsapp.com/channel/0029Vb6pjh547Xe2MP2TV11o
+- ¡Con mucho gusto! Cualquier duda futura, aquí estaremos para ayudarte. ¡Hasta luego! 👋
+
++ gracias por tu ayuda
+- ¡De nada! Fue un placer orientarte. Si tienes más dudas, no dudes en escribir. 😊
+- ¡Para eso estamos! ¡Que te vaya muy bien! 🙌
+
++ gracias por la info
+- ¡De nada! Si necesitas más información en el futuro, aquí estaremos. 😊
+- ¡Con gusto! Recuerda que puedes escribirnos cuando lo necesites. 👋
+
++ gracias por la informacion
+- ¡De nada! Espero que la información te haya sido útil. ¡Hasta luego! 😊
+- ¡Con mucho gusto! Cualquier otra duda, aquí estamos. 👋
+
++ gracias por orientarme
+- ¡Fue un placer! Para eso estamos aquí. ¡Que te vaya muy bien! 😊
+- ¡Con mucho gusto! Si necesitas más orientación en el futuro, no dudes en escribir. 🙌
+
++ gracias por tu tiempo
+- ¡El tiempo bien invertido! Fue un gusto atenderte. ¡Hasta pronto! 😊
+- ¡De nada! Para eso estamos. ¡Cuídate mucho! 👋
+
+// --- Expresiones de agradecimiento profundo ---
+
++ te lo agradezco
+- ¡Es un placer ayudarte! Si surge alguna otra duda, aquí estaremos. 😊
+- ¡Con gusto! Me alegra haberte podido orientar. ¡Hasta luego! 👋
+
++ te agradezco
+- ¡De nada! Fue un gusto orientarte sobre los programas de SEDECO. 😊
+- ¡Para eso estamos! ¡Que te vaya excelente! 🙌
+
++ muy agradecido
+- ¡Es un placer! Aquí estaremos cuando lo necesites. ¡Hasta la próxima! 😊
+- ¡Con mucho gusto! Que tengas un excelente día. 👋
+
++ muy agradecida
+- ¡Con todo el gusto! Me alegra haberte podido ayudar. ¡Hasta pronto! 😊
+- ¡Es un placer! Si tienes más preguntas en el futuro, aquí estaremos. 👋
+
++ estoy agradecido
+- ¡No hay de qué! Para eso estamos aquí. ¡Cuídate mucho! 😊
+- ¡Con mucho gusto! ¡Que te vaya muy bien! 🙌
+
++ estoy agradecida
+- ¡De nada! Fue un placer orientarte. ¡Hasta pronto! 😊
+- ¡Con gusto! Aquí estaremos cuando lo necesites. 👋
+
++ gracias de verdad
+- ¡De verdad es un placer ayudarte! Si tienes más preguntas, no dudes en escribir. 😊
+- ¡El gusto es nuestro! ¡Que te vaya muy bien! 🙌
+
++ de verdad gracias
+- ¡Con todo el gusto! Espero haberte orientado bien. ¡Hasta luego! 😊
+- ¡Es un placer! Aquí estaremos cuando lo necesites. 👋
+
+// --- Cierres coloquiales con "gracias" al final ---
+
++ ok gracias
+- ¡Perfecto! Si tienes más dudas, aquí estamos. ¡Hasta luego! 😊
+- ¡Con gusto! ¡Que te vaya muy bien! 👋
+
++ sale gracias
+- ¡Sale! Si necesitas algo más, no dudes en escribir. 😊
+- ¡Con gusto! ¡Hasta la próxima! 👋
+
++ listo gracias
+- ¡Listo! Si surge alguna otra duda, aquí estaremos. 😊
+- ¡Con mucho gusto! ¡Que te vaya excelente! 🙌
+
++ perfecto gracias
+- ¡Me alegra que haya quedado claro! Cualquier duda futura, aquí estamos. 😊
+- ¡Con gusto! ¡Hasta pronto! 👋
+
++ entendido gracias
+- ¡Excelente! Si tienes más preguntas, no dudes en escribir. 😊
+- ¡Con mucho gusto! ¡Que te vaya muy bien! 👋
+
++ ya entendi gracias
+- ¡Perfecto! Me alegra haberte podido orientar. ¡Hasta luego! 😊
+- ¡Con gusto! Si necesitas más info en el futuro, aquí estaremos. 🙌
+
++ me quedo claro gracias
+- ¡Excelente! Si en algún momento tienes más dudas, aquí estaremos. 😊
+- ¡Me alegra! ¡Que te vaya muy bien! 👋
+
++ me quedo claro
+- ¡Perfecto! Si tienes alguna otra pregunta, con gusto te ayudamos. 😊
+- ¡Qué bueno! Aquí estaremos cuando lo necesites. 👋
+
++ excelente gracias
+- ¡Con mucho gusto! Fue un placer orientarte. ¡Hasta pronto! 😊
+- ¡El gusto es nuestro! ¡Que te vaya muy bien! 🙌
+
++ todo claro gracias
+- ¡Perfecto! Si surge alguna duda más adelante, aquí estamos. 😊
+- ¡Con gusto! ¡Hasta la próxima! 👋
+
++ todo bien gracias
+- ¡Excelente! Fue un gusto atenderte. ¡Cuídate! 😊
+- ¡Con mucho gusto! ¡Que te vaya muy bien! 👋
+
+// --- Comodines para capturar variantes no listadas ---
+// "super gracias", "oye gracias", "gracias crack", etc.
+
++ * gracias
+- ¡Con mucho gusto! Fue un placer orientarte. Si tienes más preguntas, aquí estaré. 😊
+- ¡De nada! Espero haberte ayudado. ¡Hasta luego! 👋
+
++ gracias *
+- ¡De nada! Si necesitas algo más en el futuro, aquí estaremos. 😊
+- ¡Con gusto! ¡Que te vaya muy bien! 👋

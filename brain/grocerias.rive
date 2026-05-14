@@ -1,0 +1,85 @@
+! version = 2.0
+
+// Array con todas las groserías y sus variantes (espacios como separador)
+// Los ! sub de saludo.rive ya normalizan acentos: á→a, ó→o, ñ→n, etc.
+
+! array malas = puta puto putas putos putazo putazos
+^ chinga chingo chingada chingado chingadas chingados chingadera chingaderas chinguen chingasos chingazos
+^ verga vergas
+^ pendejo pendeja pendejos pendejas pendejada pendejadas
+^ culero culera culeros culeras
+^ cabron cabrona cabrones cabronas
+^ pinche pinches
+^ mierda mierdas
+^ joder jodido jodida jodidos jodidas
+^ cono conos
+^ culo culos
+^ perra perro perras perros
+^ mamada mamadas
+^ wey guey weyes buey bueyes
+^ marica maricas maricon maricones
+^ idiota idiotas
+^ imbecil imbeciles
+^ estupido estupida estupidos estupidas
+^ ojete ojetes
+^ cagada cagado cagadas cagados
+^ hdp wtf
+^ fuck fucker fucking fucked fucken fuckers
+^ shit shits
+^ bitch bitches
+^ bastard bastards
+^ asshole assholes
+^ damn crap piss
+^ cock cocks dick dicks
+^ pussy cunt cunts
+^ motherfucker motherfuckers
+^ bullshit jackass jackasses dumbass
+^ idiot idiots moron morons retard retards
+^ jerk jerks whore whores slut sluts
+^ fag fags faggot faggots
+
+// ============================================================
+// PATRONES — cubren la grosería en cualquier posición del mensaje
+// ============================================================
+
+// Solo la grosería
++ (@malas)
+- ¡Ey ey! Sin groserías, bro 😅 Aquí somos gente de bien. ¿En qué te echo la mano?
+- Oye, aguas con el vocabulario 🙊 Cuéntame qué necesitas, pero sin esas palabras. ¿Sale?
+- ¡Ei! Toca respetar, compita 🤙 Sin malas palabras que aquí sí te ayudamos.
+- No manches, bro 😂 Sin esas palabritas, que aquí andamos de buena vibra. ¿Qué necesitas?
+- Ajá, ya vi... cálmate el vocabulario 😄 Aquí te atendemos, pero bien hablado. ¿Qué onda?
+- ¡Ey! Guarda las groserías pa' otro lado 😅 Aquí somos respetuosos. ¿En qué te apoyamos?
+
+// Grosería al final: "ya cállate, pendejo"
++ * (@malas)
+- ¡Ei ei! Sin groserías, please 🙏 Aquí somos equipo, no te me pongas así. ¿Qué se te ofrece?
+- Oye, aguas con lo que dices 😬 Sin esas palabras que sí te ayudamos. ¿Qué necesitas?
+- ¡Calma, calma! 😅 Sin groserías que aquí no hay drama. Cuéntame en qué te echo la mano.
+- No, no, no... sin esas palabras 😂 Aquí andamos pa' ayudarte, pero con respeto. ¿Qué onda?
+- ¡Ey! Relájate tantito 🤙 Sin groserías, bro. ¿En qué te puedo orientar?
+
+// Grosería al inicio: "pinche sistema no sirve"
++ (@malas) *
+- ¡Ey! Sin groserías, compita 😅 Cuéntame qué pasó y lo vemos juntos. ¿Qué necesitas?
+- Oye, oye... aguas con las palabritas 🙊 Sin eso sí te ayudo al tiro. ¿Qué se te ofrece?
+- ¡Ei! Sin malas palabras, bro 😄 Dime qué pasa y te echamos la mano. ¿Qué onda?
+- No manches, sin groserías 😂 Aquí somos buena vibra. ¿En qué te puedo apoyar?
+- ¡Calma! 🤙 Sin esas palabras que aquí nadie te va a fallar. ¿Qué necesitas?
+
+// Grosería en medio: "eres un pinche idiota"
++ * (@malas) *
+- ¡Ey ey ey! Aguas con el vocabulario, bro 😅 Sin groserías que aquí somos gente de bien. ¿Qué se te ofrece?
+- Oye, cálmate 🙏 Aquí te ayudamos pero sin esas palabras. Cuéntame qué necesitas.
+- ¡Ei! Sin malas palabras, compita 🤙 Aquí no hay bronca, ¿en qué te echo la mano?
+- No, no... sin groserías, por favor 😬 Dime qué pasó y lo vemos. ¿Qué onda?
+- ¡Ey! Guarda el vocabulario 😂 Aquí andamos pa' ayudarte, pero con respeto. ¿Qué necesitas?
+
+// Frase "hijo de..."
++ hijo de *
+- ¡Ei! Sin groserías, bro 😅 Aquí somos familia, no te me pongas así. ¿En qué te apoyo?
+- Oye, aguas 🙊 Sin esas palabras que sí te atendemos. ¿Qué necesitas?
+
++ * hijo de *
+- ¡Ey! Cálmate el vocabulario, compita 😄 Sin groserías que aquí te ayudamos al tiro.
+- No manches, sin esas palabras 🤙 Cuéntame qué se te ofrece y lo resolvemos.

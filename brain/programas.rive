@@ -1,0 +1,181 @@
+! version = 2.0
+
+// Palabras relacionadas con dinero / monto de apoyo
+! array dinero = monto beca pagan pago apoyo sueldo salario cobran reciben mensualidad cuanto cuantos cuanta cuantas
+
+// Palabras relacionadas con requisitos / documentos (usadas en todos los archivos de brain)
+! array reqpalabras = requisitos documentos papeles requisito documento necesito necesitas piden solicitan tramitar registrar registro
+
+// ============================================================
+// CONSULTA GENERAL — preguntan por "la beca" sin especificar programa
+// ============================================================
+
++ cual es el monto de la beca
+- En SEDECO contamos con dos programas de apoyo economico:\n\n*Transformando con la Juventud* (18 a 28 anos)\n- Educacion Superior: *$10,000 MXN/mes*\n- Bachillerato Tecnologico: *$9,000 MXN/mes*\nDuracion: hasta 6 meses\n\n*Tu Experiencia Transforma* (50 a 64 anos)\n- Apoyo: *$10,000 MXN/mes*\nDuracion: hasta 6 meses\n\n¿A cual de los dos programas te refieres?
+
++ cuanto es la beca
+@ cual es el monto de la beca
+
++ cuanto es el apoyo
+@ cual es el monto de la beca
+
++ monto de la beca
+@ cual es el monto de la beca
+
++ monto del apoyo
+@ cual es el monto de la beca
+
++ de cuanto es la beca
+@ cual es el monto de la beca
+
++ de cuanto es el apoyo
+@ cual es el monto de la beca
+
++ cual es la beca
+@ cual es el monto de la beca
+
++ cuanto dan de beca
+@ cual es el monto de la beca
+
++ cuanto dan de apoyo
+@ cual es el monto de la beca
+
++ cuanto es el monto
+@ cual es el monto de la beca
+
++ cuanto es el monto de la beca
+@ cual es el monto de la beca
+
++ cuanto pagan de beca
+@ cual es el monto de la beca
+
++ cuanto pagan de apoyo
+@ cual es el monto de la beca
+
++ cual es el sueldo
+@ cual es el monto de la beca
+
++ cuanto es el sueldo
+@ cual es el monto de la beca
+
++ cuanto cobran de beca
+@ cual es el monto de la beca
+
+// Comodines para variantes no listadas (con ancla en "beca" o "monto")
++ * monto * beca
+@ cual es el monto de la beca
+
++ * beca * monto
+@ cual es el monto de la beca
+
++ cuanto * beca
+@ cual es el monto de la beca
+
++ * cuanto * beca
+@ cual es el monto de la beca
+
+// ============================================================
+// TRANSFORMANDO CON LA JUVENTUD — consultas de monto
+// ============================================================
+
++ cuanto pagan en transformando con la juventud
+- El apoyo economico del programa *Transformando con la Juventud* es:\n- Egresados de Educacion Superior: *$10,000 MXN/mes*\n- Egresados de Bachillerato Tecnologico: *$9,000 MXN/mes*\n\nLa estancia tiene una duracion de hasta *6 meses*.\n¿Te gustaria conocer los requisitos o como registrarte?
+
++ monto de la beca transformando con la juventud
+@ cuanto pagan en transformando con la juventud
+
++ cuanto es el apoyo de transformando con la juventud
+@ cuanto pagan en transformando con la juventud
+
++ cuanto dan en transformando con la juventud
+@ cuanto pagan en transformando con la juventud
+
++ cuanto pagan en transformando
+@ cuanto pagan en transformando con la juventud
+
++ monto de la beca transformando
+@ cuanto pagan en transformando con la juventud
+
++ cuanto es el apoyo de transformando
+@ cuanto pagan en transformando con la juventud
+
++ cuanto es la beca de transformando
+@ cuanto pagan en transformando con la juventud
+
++ beca de transformando
+@ cuanto pagan en transformando con la juventud
+
++ sueldo de transformando
+@ cuanto pagan en transformando con la juventud
+
++ cuanto pagan transformando
+@ cuanto pagan en transformando con la juventud
+
+// Comodines: dinero + transformando en cualquier orden
++ (@dinero) * transformando
+@ cuanto pagan en transformando con la juventud
+
++ transformando * (@dinero)
+@ cuanto pagan en transformando con la juventud
+
++ * (@dinero) * transformando
+@ cuanto pagan en transformando con la juventud
+
++ * transformando * (@dinero)
+@ cuanto pagan en transformando con la juventud
+
++ * (@dinero) * transformando *
+@ cuanto pagan en transformando con la juventud
+
++ * transformando * (@dinero) *
+@ cuanto pagan en transformando con la juventud
+
+// ============================================================
+// TU EXPERIENCIA TRANSFORMA — consultas de monto
+// ============================================================
+
++ cuanto pagan en tu experiencia transforma
+- El apoyo economico del programa *Tu Experiencia Transforma* es de *$10,000 MXN/mes* durante hasta *6 meses*.\n\n¿Te gustaria conocer los requisitos o como registrarte?
+
++ monto de la beca tu experiencia transforma
+@ cuanto pagan en tu experiencia transforma
+
++ cuanto es el apoyo de tu experiencia transforma
+@ cuanto pagan en tu experiencia transforma
+
++ cuanto dan en tu experiencia transforma
+@ cuanto pagan en tu experiencia transforma
+
++ cuanto pagan en experiencia transforma
+@ cuanto pagan en tu experiencia transforma
+
++ monto de la beca experiencia transforma
+@ cuanto pagan en tu experiencia transforma
+
++ cuanto es la beca de tu experiencia
+@ cuanto pagan en tu experiencia transforma
+
++ beca de experiencia transforma
+@ cuanto pagan en tu experiencia transforma
+
++ sueldo de experiencia transforma
+@ cuanto pagan en tu experiencia transforma
+
+// Comodines: dinero + experiencia transforma en cualquier orden
++ (@dinero) * experiencia transforma
+@ cuanto pagan en tu experiencia transforma
+
++ experiencia transforma * (@dinero)
+@ cuanto pagan en tu experiencia transforma
+
++ * (@dinero) * experiencia transforma
+@ cuanto pagan en tu experiencia transforma
+
++ * experiencia transforma * (@dinero)
+@ cuanto pagan en tu experiencia transforma
+
++ * (@dinero) * experiencia transforma *
+@ cuanto pagan en tu experiencia transforma
+
++ * experiencia transforma * (@dinero) *
+@ cuanto pagan en tu experiencia transforma
