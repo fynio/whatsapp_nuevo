@@ -4,6 +4,7 @@ const { registrarContacto } = require('../models/Contacto');
 const { registrarChat } = require('../models/Chat');
 const { riveReply } = require('./rivescript');
 const { detectarInjection } = require('./injection');
+const { consultarDirectorio } = require('./directorio');
 
 const AI_PROVIDER  = (process.env.AI_PROVIDER  || 'ollama').toLowerCase();
 const OLLAMA_URL   = process.env.OLLAMA_URL   || 'http://localhost:11434';
@@ -387,6 +388,20 @@ client.on('message', async (msg) => {
     await new Promise(r => setTimeout(r, 700));
     await chat.clearState();
     await msg.reply(injectionResp);
+    return;
+  }
+
+  // Consulta al directorio interno de contactos
+  const dirRespuesta = consultarDirectorio(texto);
+  if (dirRespuesta) {
+    console.log(`[DIR] +${numero}: ${texto}`);
+    await chat.sendStateTyping();
+    await new Promise(r => setTimeout(r, 400));
+    await chat.clearState();
+    await msg.reply(dirRespuesta);
+    registrarChat(numero, texto, dirRespuesta).catch(err =>
+      console.error('[DB] Error guardando chat directorio:', err.message)
+    );
     return;
   }
 
