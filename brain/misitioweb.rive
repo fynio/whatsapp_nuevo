@@ -100,3 +100,22 @@
 
 + url de mi sitio web hidalgo
 @ contacto de mi sitio web hidalgo
+
+// Comodines con (@contactopalabras)
++ * (@contactopalabras) * mi sitio web *
+@ contacto de mi sitio web hidalgo
+
++ * (@contactopalabras) * mi sitio web
+@ contacto de mi sitio web hidalgo
+
++ * (@contactopalabras) * misitioweb *
+@ contacto de mi sitio web hidalgo
+
++ * (@contactopalabras) * misitioweb
+@ contacto de mi sitio web hidalgo
+
++ (@contactopalabras) * mi sitio web
+@ contacto de mi sitio web hidalgo
+
++ (@contactopalabras) * misitioweb
+@ contacto de mi sitio web hidalgo

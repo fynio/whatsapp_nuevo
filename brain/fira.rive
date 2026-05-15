@@ -156,3 +156,22 @@
 
 + url de fira
 @ contacto de inclusion financiera fira
+
+// Comodines con (@contactopalabras)
++ * (@contactopalabras) * fira *
+@ contacto de inclusion financiera fira
+
++ * (@contactopalabras) * fira
+@ contacto de inclusion financiera fira
+
++ * (@contactopalabras) * inclusion financiera *
+@ contacto de inclusion financiera fira
+
++ * (@contactopalabras) * inclusion financiera
+@ contacto de inclusion financiera fira
+
++ (@contactopalabras) * fira
+@ contacto de inclusion financiera fira
+
++ (@contactopalabras) * inclusion financiera
+@ contacto de inclusion financiera fira

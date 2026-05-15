@@ -106,3 +106,22 @@
 
 + url de consume hidalgo
 @ contacto de consume hidalgo
+
+// Comodines con (@contactopalabras)
++ * (@contactopalabras) * consume hidalgo *
+@ contacto de consume hidalgo
+
++ * (@contactopalabras) * consume hidalgo
+@ contacto de consume hidalgo
+
++ * (@contactopalabras) * consume *
+@ contacto de consume hidalgo
+
++ * (@contactopalabras) * consume
+@ contacto de consume hidalgo
+
++ (@contactopalabras) * consume hidalgo
+@ contacto de consume hidalgo
+
++ (@contactopalabras) * consume
+@ contacto de consume hidalgo

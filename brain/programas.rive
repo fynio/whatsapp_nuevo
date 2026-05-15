@@ -6,6 +6,9 @@
 // Palabras relacionadas con requisitos / documentos (usadas en todos los archivos de brain)
 ! array reqpalabras = requisitos documentos papeles requisito documento necesito necesitas piden solicitan tramitar registrar registro
 
+// Palabras relacionadas con datos de contacto (usadas en todos los archivos de brain)
+! array contactopalabras = correo email telefono contacto pagina link enlace url numero
+
 // ============================================================
 // CONSULTA GENERAL — preguntan por "la beca" sin especificar programa
 // ============================================================

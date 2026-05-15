@@ -165,3 +165,16 @@
 
 + url de experiencia transforma
 @ contacto de tu experiencia transforma
+
+// Comodines con (@contactopalabras)
++ * (@contactopalabras) * experiencia transforma *
+@ contacto de tu experiencia transforma
+
++ * (@contactopalabras) * experiencia transforma
+@ contacto de tu experiencia transforma
+
++ (@contactopalabras) * experiencia transforma *
+@ contacto de tu experiencia transforma
+
++ (@contactopalabras) * experiencia transforma
+@ contacto de tu experiencia transforma

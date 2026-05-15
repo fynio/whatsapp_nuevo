@@ -159,3 +159,22 @@
 
 + url de impulso
 @ contacto de impulso nafin
+
+// Comodines con (@contactopalabras)
++ * (@contactopalabras) * impulso nafin *
+@ contacto de impulso nafin
+
++ * (@contactopalabras) * impulso nafin
+@ contacto de impulso nafin
+
++ * (@contactopalabras) * impulso *
+@ contacto de impulso nafin
+
++ * (@contactopalabras) * impulso
+@ contacto de impulso nafin
+
++ (@contactopalabras) * impulso nafin
+@ contacto de impulso nafin
+
++ (@contactopalabras) * impulso
+@ contacto de impulso nafin
