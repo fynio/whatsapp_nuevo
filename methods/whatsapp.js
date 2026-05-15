@@ -5,6 +5,7 @@ const { registrarChat } = require('../models/Chat');
 const { riveReply } = require('./rivescript');
 const { detectarInjection } = require('./injection');
 const { consultarDirectorio } = require('./directorio');
+const { estaAutorizado, detectarReporte, generarYEnviarReporte, manejarMaestro } = require('./maestro');
 
 const AI_PROVIDER  = (process.env.AI_PROVIDER  || 'ollama').toLowerCase();
 const OLLAMA_URL   = process.env.OLLAMA_URL   || 'http://localhost:11434';
@@ -325,7 +326,7 @@ client.on('message', async (msg) => {
   const chat    = await msg.getChat();
 
   const nombre = contact.pushname || contact.name || null;
-  const numero = msg.from.replace('@c.us', '').replace('@g.us', '');
+  const numero = contact.number || msg.from.replace(/@\w+$/g, '');
 
   // Guardar en memoria
   state.mensajes.unshift({
@@ -354,10 +355,33 @@ client.on('message', async (msg) => {
 
   const texto = msg.body.trim();
 
-  // Usuarios baneados temporalmente
-  if (estaBaneado(numero)) {
-    await msg.reply('En este momento no me encuentro disponible.');
+  // Acceso privilegiado — maestro principal y autorizados
+  if (estaAutorizado(numero)) {
+    const claveReporte = detectarReporte(texto);
+    if (claveReporte) {
+      await generarYEnviarReporte(msg, claveReporte);
+    } else {
+      await manejarMaestro(msg, numero, texto);
+    }
     return;
+  } else {
+    // Usuarios baneados temporalmente
+    if (estaBaneado(numero)) {
+      await msg.reply('En este momento no me encuentro disponible.');
+      return;
+    }
+
+    // Filtro de prompt injection — bloquea y banea 1 hora
+    const injectionResp = detectarInjection(texto);
+    if (injectionResp) {
+      console.log(`[INJECTION] +${numero}: ${texto}`);
+      banear(numero);
+      await chat.sendStateTyping();
+      await new Promise(r => setTimeout(r, 700));
+      await chat.clearState();
+      await msg.reply(injectionResp);
+      return;
+    }
   }
 
   // Comando /reiniciar — borra el historial y saluda de nuevo
@@ -377,18 +401,6 @@ client.on('message', async (msg) => {
     if (nuevo) console.log(`[NUEVO CONTACTO] +${numero} (${nombre || 'sin nombre'})`);
   } catch (err) {
     console.error('[DB] Error registrando contacto:', err.message);
-  }
-
-  // Filtro de prompt injection — bloquea y banea 1 hora
-  const injectionResp = detectarInjection(texto);
-  if (injectionResp) {
-    console.log(`[INJECTION] +${numero}: ${texto}`);
-    banear(numero);
-    await chat.sendStateTyping();
-    await new Promise(r => setTimeout(r, 700));
-    await chat.clearState();
-    await msg.reply(injectionResp);
-    return;
   }
 
   // Consulta al directorio interno de contactos
